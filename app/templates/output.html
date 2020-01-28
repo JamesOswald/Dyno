@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="col-md-6">
+<h2> Exact matching viruses </h2>
+{% for exact_match in exact_matches %}
+<div class="row">
+{{exact_match.name}}
+</div>
+{% endfor %}
+</div>
+<div class="col-md-6"> <!-- could create another template for this and import it, seems unecessary at this point -->
+    <h2> Single Substitution matching viruses </h2>
+    {% for single_sub_match in single_sub_matches %}
+    <div class="row">
+    {{single_sub_match.name}}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
