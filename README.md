@@ -74,7 +74,7 @@
   - Ok the source of the issue is the fact that I subtract from the single substitution set the exact match set, to remove duplicates. 
   - This effect goes away as the search string gets larger, this makes sense: for smaller search strings, the probability that a sequence contains an exact match is very high, so most strings in the 470 items match but as string length this probability decreases and the single substitution probability shrinks much slower than the exact match probability
   
-  #Bonus 1
+ # Bonus 1
   - Code modifications: Add a field to the form for inputting an integer, If n perform bonus calculation, add an output page for this
   - How to do bonus calculation:
   - example say my database is [AACT, CAATCAC, ACACAC, ACTC] and my input string is ACTCCG, and n = 2 this should return AC since ACTC only occurs in one
@@ -83,7 +83,7 @@
   - Since I am running low on time, I will implement the brute force approach, this could be sped up with multiprocessing, and definetly sped up with this: https://link.springer.com/article/10.1007/s00453-009-9369-1  
   - I wish I had seen this when I started, I would have implemented the entire question this way: https://en.wikipedia.org/wiki/Suffix_tree
   
- #Bonus 2
+ # Bonus 2
   - Did not have time, however, to do this I would refactor my existing code completely, 
   - I would create a new model called SuffixTreeNode and SuffixTree in the database
   - Then we could search throught the tree at a specific n for the most frequently occuring substring
