@@ -12,7 +12,7 @@ alphabet = set(['A', 'C', 'G', 'T'])
 def index():
     form = SequenceInputForm()
     # find all exact matches, if necessary for speed this could be run in parallel with the single sub queries
-    if form.integer_input.data == None: 
+    if form.is_submitted(): 
         # main question
         exact_matches = set(Sequence.query.filter(Sequence.sequence.contains(form.input_sequence.data)).all())
         single_sub_matches = set(single_sub_query(form.input_sequence.data, exact_matches))
