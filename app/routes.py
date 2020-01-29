@@ -14,18 +14,19 @@ def index():
     # find all exact matches, if necessary for speed this could be run in parallel with the single sub queries
     if form.is_submitted(): 
         # main question
-        exact_matches = set(Sequence.query.filter(Sequence.sequence.contains(form.input_sequence.data)).all())
-        single_sub_matches = set(single_sub_query(form.input_sequence.data, exact_matches))
-        single_sub_matches -=  exact_matches
-        return render_template('output.html', exact_matches=exact_matches, single_sub_matches=single_sub_matches)
+        if not form.integer_input.data:
+            exact_matches = set(Sequence.query.filter(Sequence.sequence.contains(form.input_sequence.data)).all())
+            single_sub_matches = set(single_sub_query(form.input_sequence.data, exact_matches))
+            single_sub_matches -=  exact_matches
+            return render_template('output.html', exact_matches=exact_matches, single_sub_matches=single_sub_matches)
 
-    elif form.integer_input.data and form.input_sequence.data:
-        #Bonus 1
-        sub_string, num_matches = bonus_one(form.integer_input.data, form.input_sequence.data)
-        if num_matches and sub_string: 
-            return render_template('bonus_one_output.html',sub_string=sub_string, num_needed=form.integer_input.data, num_matches=num_matches)
-        else:
-            return render_template('none_found.html')
+        elif form.integer_input.data and form.input_sequence.data:
+            #Bonus 1
+            sub_string, num_matches = bonus_one(form.integer_input.data, form.input_sequence.data)
+            if num_matches and sub_string: 
+                return render_template('bonus_one_output.html',sub_string=sub_string, num_needed=form.integer_input.data, num_matches=num_matches)
+            else:
+                return render_template('none_found.html')
     return render_template('input.html', form=form)
 
 def single_sub_query(input_string, exact_matches):
