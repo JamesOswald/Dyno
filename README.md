@@ -88,3 +88,14 @@
   - I would create a new model called SuffixTreeNode and SuffixTree in the database
   - Then we could search throught the tree at a specific n for the most frequently occuring substring
   
+  # Deployment
+  - I had a fair amount of trouble deploying, I think this is because I am unfamiliar with flask. I initially tried elastic beanstalk, but I got an error "Your WSGI path points to a file that does not exist", I tried a bunch of things including manually pointing to my .wsgi file, but I think the problem was with the actual structure of my project
+  - I switched to app engine on gcloud, but that had issues reaching the database 
+  - I then decided to use a full vm and used nginx and pm2 on a machine running ubuntu. I then forwarded the flask app running on localhost to port 80 using a reverse proxy. This worked, albeit should never be used in production.
+  
+  # Conclusion
+  - To be transparent, I spent a fair amount of time on the deploy, more than on the challenge itself, I hope you are okay with that. Typically, when I deploy something I do it as an engineer as part of a team, the deploy process is already laid out so I dont  have to deploy a project from scratch. If this is something you want me to know more about, it is something I can learn much better before my start date. 
+  - I would love to refactor my code using Suffix Trees, which I discovered pretty late into the challenge
+  - If I had more times I would like to write a suite of tests to validate my code.
+  
+  
